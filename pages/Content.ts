@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Snoowrap from 'snoowrap';
 
-const Content = ({ data: Snoowrap.Listing<Snoowrap.Submission> }) => {
+const Content = ({ data }) => {
   const [posts, setPosts] = useState(data);
   const [hasMore, setHasMore] = useState(true);
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Snoowrap from 'snoowrap';
 
-const Content = ({ data: Snoowrap.Listing<Snoowrap.Submission> }) => {
+const Content = ({ data }) => {
   const [posts, setPosts] = useState(data);
   const [hasMore, setHasMore] = useState(true);
 
@@ -12,7 +13,7 @@ const Content = ({ data: Snoowrap.Listing<Snoowrap.Submission> }) => {
       }&_limit=50`
     );
     const newPosts = await res.json();
-    setPosts(post => [...post, ...newPosts]);
+    // setPosts(post => [...post, ...newPosts]);
   };
 
   return (
@@ -29,7 +30,6 @@ const Content = ({ data: Snoowrap.Listing<Snoowrap.Submission> }) => {
             <div className="back">
               <strong> {data.id}</strong> {data.title}
             </div>
-            {data.completed}
           </div>
         ))}
       </InfiniteScroll>

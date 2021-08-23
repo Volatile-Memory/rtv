@@ -1,4 +1,5 @@
 import Content from './Content';
+import Snoowrap from 'snoowrap';
 
 export default function index(props) {
   return (
@@ -11,9 +12,14 @@ export default function index(props) {
 }
 
 export const getStaticProps = async () => {
-  const data = await fetch(
-    'https://jsonplaceholder.typicode.com/todos?_limit=50'
-  ).then(response => response.json());
+  const reddit = new Snoowrap({
+    userAgent: '',
+    clientId: '',
+    clientSecret: '',
+    username: '',
+    password: ''
+  });
+  const data = await reddit.getHot();
   return {
     props: { data }
   };
